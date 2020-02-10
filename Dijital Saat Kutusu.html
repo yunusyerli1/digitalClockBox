@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dijital Saat Kutusu</title>
+        <style>
+            body{
+                background-color: black;
+            }
+            .boxContainer{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            
+            }
+            .box{
+                height: 150px;
+                width: 150px;
+                background-color: blanchedalmond;
+                border: 2px solid white;
+                border-radius: 10%;
+                display: inline-block;
+                color: black;
+                font-size: 40px;
+                line-height: 150px;
+                text-align: center;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div class="boxContainer" id="hepsi">
+            <div class="box" id="bir"></div>
+            <div class="box" id="iki"></div>
+            <div class="box" id="uc"></div>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            let date= new Date();
+            let hour=date.getHours();
+            let minute=date.getMinutes();
+            let second=date.getSeconds();
+            var timer=setInterval(function(){
+                $("#bir").text(hour);
+                $("#iki").text(minute);
+                $("#uc").text(second++);
+                if(second>=60){
+                minute++;
+                    second=0;
+                }
+                if(minute>=60){
+                    hour++;
+                    minute=0;
+                }
+                if(hour>=24){
+                    hour=0;
+                }
+            },1000);
+
+             $("#hepsi").click(function(){
+                $("#hepsi").toggle(1000, geriGetir)
+             });
+             function geriGetir(){
+                $("#hepsi").toggle(1000);
+             }
+            
+        
+        
+        </script>
+    </body>
+</html>
